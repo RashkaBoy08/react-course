@@ -1,10 +1,9 @@
-import { Greeting, WelcomeMessage } from "./Greeting";
+import Layout from "./Blog";
 
 function App() {
   return (
     <>
-      <Greeting />;
-      <WelcomeMessage />;
+      <Layout />
     </>
   );
 }
