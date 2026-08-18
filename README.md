@@ -1,16 +1,51 @@
-# React + Vite
+# React Course - Maahir Developer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my React learning journey! 🚀
 
-Currently, two official plugins are available:
+This is a React course project where I'm building and learning React fundamentals with Vite as the build tool.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📚 Project Overview
 
-## React Compiler
+This repository contains my React course assignments and exercises. Each folder contains different exercises and projects as I progress through the course.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Developer:** Maahir Developer
 
-## Expanding the ESLint configuration
+## 🗂️ Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Exercise_1/** - First React exercises and components
+- **src/** - Main source code with React components
+- **public/** - Static assets
+
+## 🛠️ Tech Stack
+
+- **React** - JavaScript library for building user interfaces
+- **Vite** - Fast build tool and development server
+- **ESLint** - Code quality and style checking
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development Server
+
+```bash
+npm run dev
+```
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+## 📝 Notes
+
+This project is part of my React learning course. Feel free to review my code and provide feedback!
+
+---
+
+**Last Updated:** 2026-08-15
