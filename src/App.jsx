@@ -1,16 +1,19 @@
-import Greeting from "./Usercard";
+import { useState } from "react";
 
 function App() {
-  let userName = "@username";
+  const [isOn, setIsOn] = useState(true);
 
-  let email = "123@example.com";
-
-  const idNum = "48BC12";
-  const phone = "25238383";
+  const toggleLight = () => {
+    setIsOn(!isOn);
+  };
 
   return (
     <>
-      <Greeting userName={userName} email={email} idNum={idNum} phone={phone} />
+      <button onClick={toggleLight}>
+        {isOn ? "Turn off" : "Turn on"}
+      </button>
+
+      <p>{isOn ? "The light is on" : "The light is off"}</p>
     </>
   );
 }
