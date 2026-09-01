@@ -1,103 +1,113 @@
 import { useState } from "react";
 
 export const ShoppingCart = () => {
-  const [cart, setCart] = useState([]);
+  //  useState
+  const [products, setProducts] = useState([]);
   const [productName, setProductName] = useState("");
-  const [price, setPrice] = useState("");
+  const [productPrice, setProductPrice] = useState(0);
 
-  const AddToCart = () => {
-    if (!productName.trim() || !price) {
-      return;
+  const handleCart = () => {
+    if (productName.trim() !== "" && Number(productPrice) > 0) {
+      //object
+      const newProducts = {
+        id: crypto.randomUUID(),
+        name: productName,
+        price: Number(productPrice),
+        quantity: 1,
+      };
+
+      setProducts([...products, newProducts]);
+      setProductName("");
+      setProductPrice("");
     }
-
-    const NewProduct = {
-      id: crypto.randomUUID(),
-      name: productName.trim(),
-      price: Number(price),
-      quantity: 1,
-    };
-
-    setCart([...cart, NewProduct]);
-    console.log(NewProduct);
-
-    setProductName("");
-    setPrice("");
   };
 
-  const increaseQuantity = (id) => {
-    setCart(
-      cart.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
-      ),
+  const handleProduct = (id) => {
+    console.log(products);
+
+    console.log(id);
+
+    let updatedProducts = products.filter((item) => item.id != id);
+    setProducts(updatedProducts);
+  };
+
+  const increaseProduct = (id) => {
+    console.log(products);
+
+    let updateProducts = products.map((item) =>
+      item.id === id ? { ...item, quantity: item.quantity + 1 } : item,
     );
+    setProducts(updateProducts);
   };
 
-  const decreaseQuantity = (id) => {
-    setCart(
-      cart.map((item) =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item,
-      ),
+  const decreaseProduct = (id) => {
+    let updateProducts = products.map((item) =>
+      item.id === id && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item,
     );
+
+    setProducts(updateProducts);
   };
 
-  const removeFromCart = (id) => {
-    setCart(cart.filter((item) => item.id !== id));
-  };
-
-  const totalPrice = cart.reduce(
+  const totalPrice = products.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
   );
 
-  // html
+  // Markup
   return (
     <div>
-      <h1>Simple Shopping cart</h1>
-      <h2>Add to cart</h2>
+      <h1>Simple Shopping Cart</h1>
+      <h3>Add a product</h3>
 
       <input
         type="text"
         placeholder="Product name"
         onChange={(e) => setProductName(e.target.value)}
+        value={productName}
       />
 
       <input
         type="number"
-        placeholder="Price"
-        onChange={(e) => setPrice(e.target.value)}
+        placeholder="Product price"
+        onChange={(e) => setProductPrice(e.target.value)}
+        value={productPrice}
+        min={0}
+        step={0.01}
       />
 
-      <button onClick={AddToCart}>Add to cart</button>
+      <button onClick={handleCart}>Add to cart</button>
 
-      <h2>cart</h2>
-      {cart.length === 0 ? (
-        <p>T</p>
-      ) : (
-        <ul>
-          {cart.map((item) => (
-            <li key={item.id}>
-              {" "}
-              <strong> {item.name} </strong> - ${item.price.toFixed(2)}{" "}
-              <div>
-                <button onClick={() => decreaseQuantity(item.id)}>-</button>
+      <div>
+        {products.length > 0 ? (
+          <>
+            <h3>Product in cart</h3>
+            <ul>
+              {products.map((item) => (
+                <li key={item.id}>
+                  <strong>{item.name} </strong>{" "}
+                  <span> ( ${item.price.toFixed(2)} ) </span>
+                  <div>
+                    Quantity:
+                    <button onClick={() => increaseProduct(item.id)}>+</button>
+                    <span>{item.quantity}</span>
+                    <button onClick={() => decreaseProduct(item.id)}>-</button>
+                  </div>
+                  <button onClick={() => handleProduct(item.id)}>Remove</button>
+                </li>
+              ))}
+            </ul>
+            <p>Total Price: ${totalPrice}</p>
+          </>
+        ) : (
+          <p>This cart is empty.</p>
+        )}
 
-                <span> {item.quantity} </span>
+        {/* END */}
+      </div>
 
-                <button onClick={() => increaseQuantity(item.id)}>+</button>
-
-                <button onClick={() => removeFromCart(item.id)}>Remove</button>
-              </div>
-              <p>Subtotal: ${(item.price * item.quantity).toFixed(2)}</p>
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <h2>Total: ${totalPrice.toFixed(2)}</h2>
-
-      {/* finish */}
+      {/* Finish */}
     </div>
   );
 };

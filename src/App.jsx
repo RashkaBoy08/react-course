@@ -1,6 +1,7 @@
-import { ShoppingCart } from "./ShoppingCard";
+import { GreetingTitle } from "./GreetingTitle";
+
 function App() {
-  return <ShoppingCart />;
+  return <GreetingTitle/>;
 }
 
 export default App;
