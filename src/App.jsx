@@ -1,7 +1,7 @@
-import { GreetingTitle } from "./GreetingTitle";
-
+import { MouseTracker } from "./MouseTracker";
 function App() {
-  return <GreetingTitle/>;
+  //markup
+  return <MouseTracker />;
 }
 
 export default App;
