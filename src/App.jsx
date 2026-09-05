@@ -1,50 +1,50 @@
 import { useState } from "react";
+
 function App() {
-  const [color, setColor] = useState();
+  const [hobbies, setHobbies] = useState([]);
+  const [input, setInput] = useState("");
 
-  const switchToRed = () => {
-    setColor("Red");
+  // Add hobby
+  const addHobby = () => {
+    if (input.trim() === "") return;
+
+    setHobbies([...hobbies, input]);
+    setInput("");
   };
 
-  //green color
-  const switchToGreen = () => {
-    setColor("green");
+  // Remove hobby
+  const removeHobby = (hobbyToRemove) => {
+    const newHobbies = hobbies.filter((hobby) => hobby !== hobbyToRemove);
+
+    setHobbies(newHobbies);
   };
 
-  const switchToBlue = () => {
-    setColor("blue");
-  };
-
-  const randomColor = () => {
-    let red = Math.floor(Math.random() * 256);
-    let green = Math.floor(Math.random() * 256);
-    let blue = Math.floor(Math.random() * 256);
-
-    setColor(`rgb(${red}, ${green}, ${blue})`);
-  };
-
-  //markup
   return (
     <div>
-      <div
-        style={{
-          backgroundColor: color,
-          padding: "30px",
-          margin: "20px",
-          borderRadius: "10px",
-          color: "#fff",
-          textAlign: "center",
-          fontSize: "24px",
-          fontWeight: "600",
-        }}
-      >
-        {color}
-      </div>
-      <h1>Color change</h1>
-      <button onClick={switchToRed}>Red background</button>
-      <button onClick={switchToGreen}>Green background</button>
-      <button onClick={switchToBlue}>Blue background</button>
-      <button onClick={randomColor}>Random background</button>
+      <h1>Enter your hobbies</h1>
+
+      <input
+        type="text"
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Enter your hobbies"
+        value={input}
+      />
+
+      <button onClick={addHobby}>Add Hobby</button>
+
+      <ul>
+        {hobbies.length === 0 && <p>No hobbies added yet</p>}
+
+        {hobbies.map((hobby, index) => (
+          <li key={index}>
+            {hobby}
+
+            <br />
+
+            <button onClick={() => removeHobby(hobby)}>Remove</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
