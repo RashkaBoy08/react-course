@@ -1,47 +1,84 @@
 import { useState } from "react";
 
 function App() {
-  const [hobbies, setHobbies] = useState([]);
   const [input, setInput] = useState("");
+  const [task, setTask] = useState([]);
 
-  // Add hobby
-  const addHobby = () => {
-    if (input.trim() === "") return;
+  // Add a new routine
+  const AddtoRoutine = () => {
+    const trimmedInput = input.trim();
 
-    setHobbies([...hobbies, input]);
+    // Don't add an empty task
+    if (trimmedInput === "") return;
+
+    const capitalizedInput =
+      trimmedInput.charAt(0).toUpperCase() + trimmedInput.slice(1);
+
+    const newTask = {
+      name: capitalizedInput,
+      id: crypto.randomUUID(),
+      complete: false,
+    };
+
+    setTask((prevTask) => [...prevTask, newTask]);
     setInput("");
   };
 
-  // Remove hobby
-  const removeHobby = (hobbyToRemove) => {
-    const newHobbies = hobbies.filter((hobby) => hobby !== hobbyToRemove);
+  // Toggle task completion
+  const handleToggle = (id) => {
+    const selectedTask = task.find((item) => item.id === id);
 
-    setHobbies(newHobbies);
+    if (!selectedTask) return;
+
+    setTask((prevTask) =>
+      prevTask.map((item) => {
+        if (item.id === id) {
+          const completed = !item.complete;
+
+          return { ...item, complete: completed };
+        }
+
+        return item;
+      }),
+    );
+
+    if (!selectedTask.complete) {
+      alert("Congratulations! You are done!");
+    }
+  };
+
+  const removeTask = (id) => {
+    setTask((prevTask) => prevTask.filter((item) => item.id !== id));
   };
 
   return (
     <div>
-      <h1>Enter your hobbies</h1>
+      <h1>My Daily Routine</h1>
 
       <input
         type="text"
+        placeholder="Enter your routine"
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter your hobbies"
         value={input}
       />
 
-      <button onClick={addHobby}>Add Hobby</button>
+      <button onClick={AddtoRoutine}>Add to Routine</button>
+
+      {task.length === 0 && <p>There's no routine</p>}
 
       <ul>
-        {hobbies.length === 0 && <p>No hobbies added yet</p>}
-
-        {hobbies.map((hobby, index) => (
-          <li key={index}>
-            {hobby}
-
-            <br />
-
-            <button onClick={() => removeHobby(hobby)}>Remove</button>
+        {task.map((item) => (
+          <li key={item.id}>
+            {item.name}
+            <input
+              type="checkbox"
+              onChange={() => handleToggle(item.id)}
+              checked={item.complete}
+            />
+            {/* remmove task-button  */}
+            <button onClick={() => removeTask(item.id)}>
+              Remove
+            </button> <br /> <br />
           </li>
         ))}
       </ul>
