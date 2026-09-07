@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Greeting } from "./Greeting";
 
 function App() {
   const [input, setInput] = useState("");
@@ -82,6 +83,8 @@ function App() {
           </li>
         ))}
       </ul>
+
+      <Greeting />
     </div>
   );
 }
