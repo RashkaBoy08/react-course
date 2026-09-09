@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 export const Greeting = () => {
   const [count, setCount] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const [inputTime, setInputTime] = useState(30);
+  const [inputTime, setInputTime] = useState(60);
 
   useEffect(() => {
     let timer;

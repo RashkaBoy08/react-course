@@ -1,7 +1,7 @@
-import { Greeting } from "./Greeting";
+import { SearchGithubUsers } from "./SearchGithub";
 
 function App() {
-  return <Greeting />;
+  return <SearchGithubUsers />;
 }
 
 export default App;
