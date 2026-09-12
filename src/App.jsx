@@ -1,16 +1,8 @@
-import { UserList } from "./UserList";
+import { LoginForm } from "./LoginForm";
 
 const App = () => {
-  const user = [
-    {
-      id: 1,
-      userName: "John Doe",
-      email: "John@gmail.com",
-      nationality: "Sweden",
-    },
-  ];
   //markup
-  return <UserList userData={user} />;
+  return <LoginForm></LoginForm>;
 };
 
 export default App;
