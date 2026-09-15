@@ -1,8 +1,12 @@
-import { LoginForm } from "./LoginForm";
+import { CounterProgram } from "./Counter";
 
 const App = () => {
   //markup
-  return <LoginForm></LoginForm>;
+  return (
+    <>
+      <CounterProgram></CounterProgram>
+    </>
+  );
 };
 
 export default App;
