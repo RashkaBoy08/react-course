@@ -1,12 +1,9 @@
-import { CounterProgram } from "./Counter";
+import { CounterReducer } from "./CounterReducer";
 
 const App = () => {
+
   //markup
-  return (
-    <>
-      <CounterProgram></CounterProgram>
-    </>
-  );
+  return <CounterReducer></CounterReducer>
 };
 
 export default App;

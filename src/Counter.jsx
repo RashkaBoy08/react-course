@@ -49,7 +49,8 @@ export const CounterProgram = () => {
           borderRadius: "6px",
         }}
       >
-        Count: {counter}
+        Count:
+        <span style={{ marginLeft: "5px", fontSize: "20px" }}>{counter}</span>
       </h3>
 
       <button
