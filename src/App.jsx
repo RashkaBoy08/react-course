@@ -1,9 +1,7 @@
-import { CounterReducer } from "./CounterReducer";
-
+import { StepForm } from "./StepForm";
 const App = () => {
-
   //markup
-  return <CounterReducer></CounterReducer>
+  return <StepForm />;
 };
 
 export default App;
