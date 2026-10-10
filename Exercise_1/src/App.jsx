@@ -1,8 +1,7 @@
-import { GitHub } from "./GitHub";
+import { ConnectionStatus } from "./ConnectionStatus";
 
 function App() {
-  //markup
-  return <GitHub></GitHub>;
+  return <ConnectionStatus />;
 }
 
 export default App;
