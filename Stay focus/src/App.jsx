@@ -1,3 +1,4 @@
+import "./ArrowFunction.js";
 import { useState } from "react";
 import ProductContext from "./ProductContext";
 import ProductsCart from "./ProductsCart";
