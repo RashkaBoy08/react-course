@@ -1,7 +1,6 @@
-import { ConnectionStatus } from "./ConnectionStatus";
-
+import { ContactApp } from "./Contact Form/ContactApp";
 function App() {
-  return <ConnectionStatus />;
+  return <ContactApp />;
 }
 
 export default App;
