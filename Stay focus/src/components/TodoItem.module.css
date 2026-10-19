@@ -1,0 +1,86 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 59px;
+  border-bottom: 1px solid #eff0f4;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+.task {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin: 0;
+  accent-color: #655bd4;
+  cursor: pointer;
+}
+
+.checkbox:focus-visible {
+  outline: 3px solid rgb(120 110 228 / 35%);
+  outline-offset: 2px;
+}
+
+.title {
+  overflow-wrap: anywhere;
+  color: #3b3e50;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.completed {
+  color: #a0a3b0;
+  text-decoration: line-through;
+}
+
+.deleteButton {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  color: #999dae;
+  background: transparent;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: color 150ms ease, background-color 150ms ease, opacity 150ms ease;
+}
+
+.item:hover .deleteButton,
+.deleteButton:focus-visible {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  color: #c1465b;
+  background: #fff0f2;
+}
+
+.deleteButton:focus-visible {
+  outline: 2px solid #c1465b;
+  outline-offset: 2px;
+}
+
+@media (hover: none) {
+  .deleteButton {
+    opacity: 1;
+  }
+}

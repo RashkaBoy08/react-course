@@ -1,55 +1,77 @@
 import "./ArrowFunction.js";
-import { useState } from "react";
-import ProductContext from "./ProductContext";
-import ProductsCart from "./ProductsCart";
+import { useMemo, useState } from "react";
+import TodoFilters from "./components/TodoFilters";
+import TodoForm from "./components/TodoForm";
+import TodoHeader from "./components/TodoHeader";
+import TodoList from "./components/TodoList";
+import styles from "./App.module.css";
 
-const products = [
-  {
-    id: "keyboard",
-    productName: "Keyboard",
-    price: 12,
-  },
-  {
-    id: "large-screen",
-    productName: "Large screen",
-    price: 53,
-  },
-  {
-    id: "mouse",
-    productName: "Mouse",
-    price: 5,
-  },
-];
+const filters = ["all", "active", "completed"];
 
-const App = () => {
-  const [cartItems, setCartItems] = useState([]);
+function App() {
+  const [todos, setTodos] = useState([]);
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const counts = useMemo(
+    () => ({
+      all: todos.length,
+      active: todos.filter((todo) => !todo.completed).length,
+      completed: todos.filter((todo) => todo.completed).length,
+    }),
+    [todos],
+  );
+
+  const visibleTodos = todos.filter((todo) => {
+    if (activeFilter === "active") return !todo.completed;
+    if (activeFilter === "completed") return todo.completed;
+    return true;
+  });
+
+  function addTodo(title) {
+    setTodos((currentTodos) => [
+      ...currentTodos,
+      { id: crypto.randomUUID(), title, completed: false },
+    ]);
+  }
+
+  function toggleTodo(id) {
+    setTodos((currentTodos) =>
+      currentTodos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
+  }
+
+  function deleteTodo(id) {
+    setTodos((currentTodos) => currentTodos.filter((todo) => todo.id !== id));
+  }
 
   return (
-    <div>
-      <h1>Products in Grocery store</h1>
-      <ul>
-        {products.map((product) => (
-          <li key={product.id} style={{ marginBottom: "12px" }}>
-            {product.productName}: ${product.price}
-            <br />
-            <button
-              onClick={() =>
-                setCartItems((items) => [
-                  ...items,
-                  { ...product, id: crypto.randomUUID() },
-                ])
-              }
-            >
-              Add to cart
-            </button>
-          </li>
-        ))}
-      </ul>
-      <ProductContext.Provider value={{ cartItems, setCartItems }}>
-        <ProductsCart />
-      </ProductContext.Provider>
-    </div>
+    <main className={styles.page}>
+      <section className={styles.todoApp} aria-labelledby="todo-title">
+        <TodoHeader />
+        <TodoForm onAddTodo={addTodo} />
+        <div className={styles.toolbar}>
+          <p className={styles.remainingCount} aria-live="polite">
+            {counts.active} {counts.active === 1 ? "task" : "tasks"} left
+          </p>
+          <TodoFilters
+            filters={filters}
+            activeFilter={activeFilter}
+            counts={counts}
+            onFilterChange={setActiveFilter}
+          />
+        </div>
+        <TodoList
+          todos={visibleTodos}
+          activeFilter={activeFilter}
+          onToggleTodo={toggleTodo}
+          onDeleteTodo={deleteTodo}
+        />
+      </section>
+      <p className={styles.footer}>Small steps add up. You&apos;ve got this.</p>
+    </main>
   );
-};
+}
 
 export default App;
