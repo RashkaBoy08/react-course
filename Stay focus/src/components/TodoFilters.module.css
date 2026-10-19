@@ -1,0 +1,40 @@
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border: 0;
+  border-radius: 8px;
+  color: #777c8f;
+  background: transparent;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease;
+}
+
+.filter:hover {
+  color: #4c4b82;
+  background: #f5f4ff;
+}
+
+.filter:focus-visible {
+  outline: 2px solid #786ee4;
+  outline-offset: 2px;
+}
+
+.selected {
+  color: #554bc3;
+  background: #efedff;
+  font-weight: 650;
+}
+
+.count {
+  color: inherit;
+  opacity: 0.7;
+}

@@ -1,0 +1,21 @@
+.list {
+  margin: 0;
+  padding: 0 24px;
+  list-style: none;
+}
+
+.emptyState {
+  margin: 0;
+  padding: 34px 24px 38px;
+  color: #85899a;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .list {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}

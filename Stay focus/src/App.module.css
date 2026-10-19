@@ -1,0 +1,49 @@
+.page {
+  width: min(100% - 32px, 620px);
+  margin: 72px auto 40px;
+}
+
+.todoApp {
+  overflow: hidden;
+  border: 1px solid #e7e8ee;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgb(34 39 65 / 10%);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  border-top: 1px solid #eff0f4;
+  border-bottom: 1px solid #eff0f4;
+}
+
+.remainingCount {
+  flex: 0 0 auto;
+  margin: 0;
+  color: #777c8f;
+  font-size: 13px;
+}
+
+.footer {
+  margin: 22px 0 0;
+  color: #8a8e9e;
+  font-size: 13px;
+  text-align: center;
+}
+
+@media (max-width: 520px) {
+  .page {
+    width: min(100% - 24px, 620px);
+    margin-top: 32px;
+  }
+
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 14px 20px;
+  }
+}

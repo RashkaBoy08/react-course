@@ -1,0 +1,31 @@
+.header {
+  padding: 30px 28px 25px;
+}
+
+.eyebrow {
+  margin: 0 0 9px;
+  color: #7066df;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+}
+
+.title {
+  margin: 0;
+  color: #25283a;
+  font-size: clamp(30px, 7vw, 38px);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+}
+
+.subtitle {
+  margin: 7px 0 0;
+  color: #85899a;
+  font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  .header {
+    padding: 25px 20px 20px;
+  }
+}
