@@ -1,0 +1,185 @@
+.student-form-page {
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 88% 10%, rgba(191, 219, 254, 0.55), transparent 30rem),
+    #f3f6fc;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 48px 20px;
+}
+
+.student-form-card {
+  background: #fff;
+  border: 1px solid #e3e9f3;
+  border-radius: 22px;
+  box-shadow: 0 22px 70px rgba(31, 52, 91, 0.11);
+  max-width: 540px;
+  padding: 42px;
+  width: 100%;
+}
+
+.student-form-eyebrow {
+  color: #3766c7;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 9px;
+  text-transform: uppercase;
+}
+
+.student-form-card h1 {
+  color: #192943;
+  font-size: clamp(1.8rem, 5vw, 2.25rem);
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.student-form-intro {
+  color: #65728a;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  margin: 12px 0 29px;
+}
+
+.student-form {
+  display: grid;
+  gap: 20px;
+}
+
+.student-form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.student-form-field label,
+.student-subjects-field legend {
+  color: #2d3b53;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.student-form-field input,
+.student-form-field select {
+  background: #fff;
+  border: 1px solid #d8e0ec;
+  border-radius: 10px;
+  color: #26344b;
+  font: inherit;
+  font-size: 0.92rem;
+  min-height: 47px;
+  outline: none;
+  padding: 0 14px;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  width: 100%;
+}
+
+.student-form-field input::placeholder {
+  color: #9ba7b8;
+}
+
+.student-form-field input:focus,
+.student-form-field select:focus {
+  border-color: #4778d5;
+  box-shadow: 0 0 0 3px rgba(71, 120, 213, 0.14);
+}
+
+.student-form-field input[aria-invalid="true"],
+.student-form-field select[aria-invalid="true"] {
+  border-color: #d93045;
+}
+
+.student-form-error {
+  color: #c52238;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.student-subjects-field {
+  border: 0;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+}
+
+.student-subjects-hint {
+  color: #748097;
+  font-size: 0.82rem;
+  margin: 5px 0 12px;
+}
+
+.student-subject-options {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.student-subject-option {
+  align-items: center;
+  background: #f8faff;
+  border: 1px solid #e0e7f1;
+  border-radius: 9px;
+  color: #3b4960;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.82rem;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px;
+}
+
+.student-subject-option:has(input:checked) {
+  background: #f0f5ff;
+  border-color: #7096df;
+  color: #2f5eae;
+}
+
+.student-subject-option input {
+  accent-color: #3766c7;
+  height: 16px;
+  margin: 0;
+  width: 16px;
+}
+
+.student-subjects-field .student-form-error {
+  margin-top: 10px;
+}
+
+.student-form-submit {
+  background: #3766c7;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-height: 49px;
+  margin-top: 2px;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.student-form-submit:hover {
+  background: #2d55a8;
+}
+
+.student-form-submit:active {
+  transform: translateY(1px);
+}
+
+.student-form-submit:focus-visible {
+  outline: 3px solid rgba(55, 102, 199, 0.35);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .student-form-card {
+    padding: 30px 23px;
+  }
+
+  .student-subject-options {
+    grid-template-columns: 1fr;
+  }
+}
