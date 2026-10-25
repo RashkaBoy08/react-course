@@ -1,0 +1,331 @@
+:root {
+  font-family: "Segoe UI", sans-serif;
+  color: #1a2e31;
+  background: #f0f6f3;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.registration-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 48px 20px;
+  background:
+    radial-gradient(ellipse at 12% 12%, rgba(180, 222, 207, 0.42), transparent 35%),
+    radial-gradient(ellipse at 92% 88%, rgba(217, 231, 208, 0.55), transparent 32%),
+    #f0f6f3;
+}
+
+.registration-card {
+  width: min(100%, 600px);
+  padding: 48px 56px 32px;
+  border: 1px solid #e5ede8;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 24px 70px rgba(30, 69, 55, 0.11);
+}
+
+.registration-intro {
+  margin-bottom: 32px;
+}
+
+.registration-kicker {
+  color: #27816a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.registration-intro h1 {
+  margin: 12px 0 10px;
+  color: #183b35;
+  font-family: "Segoe UI", sans-serif;
+  font-size: clamp(1.8rem, 5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1.2;
+}
+
+.registration-intro > p {
+  max-width: 430px;
+  margin: 0;
+  color: #687b76;
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.registration-intro > p span,
+.registration-form label > span:first-child,
+.registration-form legend > span {
+  color: #27816a;
+}
+
+.registration-form {
+  display: grid;
+  gap: 22px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.form-field > label,
+.form-field legend {
+  color: #29423e;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field select {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #dce7e1;
+  border-radius: 9px;
+  outline: none;
+  background: #fbfdfc;
+  color: #243c37;
+  font-size: 0.9rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.form-field input::placeholder {
+  color: #a4b2ad;
+}
+
+.form-field input[type="text"]:focus,
+.form-field input[type="email"]:focus,
+.form-field select:focus {
+  border-color: #3d9b7b;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(61, 155, 123, 0.13);
+}
+
+.form-field .has-error,
+.subject-field.has-error {
+  border-color: #dc6262;
+}
+
+.form-field input.has-error,
+.form-field select.has-error {
+  border-color: #dc6262;
+  background: #fffafa;
+}
+
+.form-field input.has-error:focus,
+.form-field select.has-error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 98, 98, 0.13);
+}
+
+.field-error,
+.submission-error {
+  margin: 0;
+  color: #c43e46;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.subject-field {
+  gap: 8px;
+}
+
+.subject-field legend {
+  padding: 0;
+}
+
+.field-hint {
+  margin: -2px 0 2px;
+  color: #7c8d87;
+  font-size: 0.79rem;
+}
+
+.subject-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.subject-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 11px;
+  border: 1px solid #e1eae5;
+  border-radius: 9px;
+  background: #fbfdfc;
+  color: #405852;
+  cursor: pointer;
+  font-size: 0.79rem;
+  font-weight: 600;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.subject-option:has(input:checked) {
+  border-color: #58a98d;
+  background: #eff8f3;
+  color: #216b54;
+}
+
+.subject-option:focus-within {
+  outline: 3px solid rgba(61, 155, 123, 0.16);
+  outline-offset: 1px;
+}
+
+.subject-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.custom-checkbox {
+  display: grid;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  place-items: center;
+  border: 1.5px solid #b8c9c1;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.subject-option input:checked + .custom-checkbox {
+  border-color: #27816a;
+  background: #27816a;
+}
+
+.subject-option input:checked + .custom-checkbox::after {
+  width: 8px;
+  height: 4px;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  content: "";
+  transform: translateY(-1px) rotate(-45deg);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.form-actions button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.form-actions button:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.reset-button {
+  padding: 0 16px;
+  background: #f2f6f3;
+  color: #536b63;
+}
+
+.reset-button:hover:not(:disabled) {
+  background: #e8efeb;
+}
+
+.submit-button {
+  padding: 0 21px;
+  background: #247c65;
+  box-shadow: 0 7px 16px rgba(36, 124, 101, 0.18);
+  color: #fff;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #1b6b56;
+  box-shadow: 0 9px 20px rgba(36, 124, 101, 0.25);
+  transform: translateY(-1px);
+}
+
+.loading-spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
+.registration-footnote {
+  margin: 26px 0 0;
+  padding-top: 19px;
+  border-top: 1px solid #edf2ef;
+  color: #87958f;
+  font-size: 0.74rem;
+  text-align: center;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 560px) {
+  .registration-card {
+    padding: 34px 24px 26px;
+    border-radius: 16px;
+  }
+
+  .registration-page {
+    padding: 24px 14px;
+  }
+
+  .subject-options {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}
